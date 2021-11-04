@@ -2,12 +2,14 @@ version: '3.1'
 services:
 
   api:
+    container_name: AD_API
     build: .
     entrypoint: '/start-reload.sh'
     ports: ['80:80']
     volumes: ['.:/app']
 
   mongo:
+    container_name: AD_mongo
     image: mongo
     restart: always
     environment:
@@ -15,6 +17,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
 
   mongo-express:
+    container_name: AD_mongo-express
     image: mongo-express
     restart: always
     ports:
